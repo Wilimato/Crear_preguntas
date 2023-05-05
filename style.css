@@ -63,8 +63,9 @@ body {
 }
 
 .botones-preguntas {
-    background: rgb(34, 193, 195);
-    background: linear-gradient(337deg, rgba(34, 193, 195, 1) 0%, rgba(253, 187, 45, 0.5046393557422969) 100%);
+    background: rgb(19, 161, 11);
+    background: linear-gradient(310deg, rgba(19, 161, 11, 0.6839110644257703) 0%, rgba(193, 182, 10, 0.7455357142857143) 100%);
+    ;
 }
 
 .botones-respuestas {
