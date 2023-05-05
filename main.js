@@ -198,3 +198,12 @@ removerRespuesta.addEventListener('click', removerBloqueRespuesta);
 botonEnviar.addEventListener('click', enviar);
 botonCopiar.addEventListener('click', copy);
 
+document.addEventListener("keyup", function (event) {
+    if (event.keyCode == 13) {
+        enviar();
+    } else if (event.keyCode === 67) {
+        copy();
+    }
+});
+
+
