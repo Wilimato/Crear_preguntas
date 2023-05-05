@@ -123,6 +123,7 @@ body {
     color: rgba(253, 187, 45, 0.5046393557422969);
     width: 500px;
     height: 500px;
+    margin: 10px;
 }
 
 #enviar {
