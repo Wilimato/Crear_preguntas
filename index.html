@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ysabeau:wght@1;100;500;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Crear Preguntas Regulares</title>
+</head>
+
+<body>
+    <main class="contenedor-principal">
+        <h1>Crear Preguntas Regulares</h1>
+        <div class="botones">
+            <div class="botones-preguntas">
+                <h2>Preguntas</h2>
+                <div class="btn-pre">
+                    <button id="myButton">+</button>
+                    <button id="removeButton">-</button>
+                </div>
+            </div>
+            <div class="botones-respuestas">
+                <h2>Respuestas</h2>
+                <div class="btn-res">
+                    <button id="Button-respuesta">+</button>
+                    <button id="ButtonRemoverRespuesta">-</button>
+                </div>
+            </div>
+        </div>
+        <section class="capsula" id="capsula">
+            <div class="contenedor_P-R">
+                <div class="contenedor_preguntas">
+                    <div class="preguntas">
+                        <label for="pregunta">Pregunta: </label>
+                        <input type="text" class="pregunta">
+                    </div>
+                </div>
+                <div class="contenedor_respuestas">
+                    <div class="respuestas">
+                        <label for="respuesta">Respuesta: </label>
+                        <input type="text" class="respuesta">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+
+            <button id="enviar">Enviar</button>
+            <button id="copiar">Copiar</button>
+        </section>
+        <section class="textarea">
+            <textarea name="resultado" id="resultado" rows="4" cols="50" maxlength="100"></textarea>
+        </section>
+
+    </main>
+
+
+    <section id="resultados">
+        <style>
+            .faq-container {
+                display: block;
+                margin: 0 auto;
+                width: 100%;
+            }
+
+            .faq-item {
+                display: block;
+                margin: 0 auto;
+                text-align: center;
+            }
+
+            .faq-title {
+                padding: 15px 0 10px 0;
+                border-style: solid;
+                border-width: 0 0 1px 0;
+                border-color: #cacaca;
+                cursor: pointer;
+            }
+
+            .faq-content {
+                display: none;
+                padding: 15px 0;
+                text-align: left;
+                margin: 0 auto;
+                width: 98%;
+            }
+
+            .faq-content p {
+                margin-bottom: 13px;
+                margin-left: 10px;
+            }
+
+            .faq-title-text,
+            .faq-title-arrow {
+                display: inline-block;
+                vertical-align: middle;
+            }
+
+            .faq-title-arrow {
+                text-align: center;
+                width: 50px;
+            }
+
+            .faq-title-text {
+                text-align: left;
+                width: calc(98% - 50px);
+
+            }
+
+            .faq-title:hover .faq-title-text h2 {
+                color: #fcb008;
+            }
+        </style>
+        <div class="faq-container">
+
+        </div>
+        <script>
+            require(['jquery'], function ($) {
+                $(document).ready(function () {
+                    $(".faq-title").click(function () {
+                        // Cerrar los otros elementos faq-content
+                        $(".faq-content").not($(this).next(".faq-content")).slideUp(200);
+                        $(".faq-title .mbi").not($(this).find(".mbi")).removeClass("mbi-chevron-up").addClass("mbi-chevron-down");
+
+                        // Desplegar el elemento faq-content correspondiente
+                        $(this).next(".faq-content").slideToggle(200);
+                        $(this).find(".mbi").toggleClass("mbi-chevron-down mbi-chevron-up");
+                    });
+                });
+            });
+        </script>
+        <script src="main.js"></script>
+</body>
+
+</html>
