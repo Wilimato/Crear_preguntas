@@ -77,7 +77,7 @@ function removerBloque() {
 
 //     const labelPregunta = document.createElement("label");
 //     labelPregunta.setAttribute("for", "respuesta");
-//     labelPregunta.textContent = "Respuesta: ";
+//     labelPregunta.textContent = "Respuesta " + (ultimoElemento.children.length) + ": ";
 
 //     const inputPregunta = document.createElement("textarea");
 //     inputPregunta.setAttribute("type", "text");
@@ -87,21 +87,17 @@ function removerBloque() {
 //     respuestas.appendChild(inputPregunta);
 
 //     ultimoElemento.appendChild(respuestas);
-
-
 // }
 
 function agregarContenedorRespuesta() {
-
-    let contenedor_respuestas = document.querySelectorAll('.contenedor_respuestas');
-    const ultimoElemento = contenedor_respuestas[contenedor_respuestas.length - 1];
-
     const respuestas = document.createElement("div");
     respuestas.classList.add("respuestas");
 
+    const answerCount = document.querySelectorAll('.respuesta').length + 1;
+
     const labelPregunta = document.createElement("label");
     labelPregunta.setAttribute("for", "respuesta");
-    labelPregunta.textContent = "Respuesta " + (ultimoElemento.children.length) + ": ";
+    labelPregunta.textContent = "Respuesta " + answerCount + ": ";
 
     const inputPregunta = document.createElement("textarea");
     inputPregunta.setAttribute("type", "text");
@@ -110,7 +106,8 @@ function agregarContenedorRespuesta() {
     respuestas.appendChild(labelPregunta);
     respuestas.appendChild(inputPregunta);
 
-    ultimoElemento.appendChild(respuestas);
+    const container = document.querySelector('.contenedor_respuestas');
+    container.appendChild(respuestas);
 }
 
 
