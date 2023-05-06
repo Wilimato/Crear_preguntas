@@ -184,6 +184,12 @@ function enviar() {
     enviado = true;
 }
 
+function copy() {
+    const textarea = document.getElementById('resultado');
+    textarea.select();
+    document.execCommand('copy');
+}
+
 button.addEventListener('click', agregarBloque);
 removeButton.addEventListener('click', removerBloque);
 buttonRespuesta.addEventListener('click', agregarContenedorRespuesta);
