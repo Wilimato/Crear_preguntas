@@ -15,43 +15,32 @@
 
 <body>
     <main class="contenedor-principal">
-        <h1>Crear Preguntas Regulares</h1>
-        <div class="botones">
-            <div class="botones-preguntas">
-                <h2>Preguntas</h2>
-                <div class="btn-pre">
-                    <button id="myButton">+</button>
-                    <button id="removeButton">-</button>
+        <header class="header">
+            <h1>Crear Preguntas Regulares</h1>
+            <div class="botones">
+                <div class="botones-preguntas">
+                    <h2>Preguntas</h2>
+                    <div class="btn-pre">
+                        <button id="myButton">+</button>
+                        <button id="removeButton">-</button>
+                    </div>
+                </div>
+                <div class="botones-respuestas">
+                    <h2>Respuestas</h2>
+                    <div class="btn-res">
+                        <button id="Button-respuesta">+</button>
+                        <button id="ButtonRemoverRespuesta">-</button>
+                    </div>
                 </div>
             </div>
-            <div class="botones-respuestas">
-                <h2>Respuestas</h2>
-                <div class="btn-res">
-                    <button id="Button-respuesta">+</button>
-                    <button id="ButtonRemoverRespuesta">-</button>
-                </div>
-            </div>
-        </div>
+        </header>
         <section class="capsula" id="capsula">
-            <div class="contenedor_P-R">
-                <div class="contenedor_preguntas">
-                    <div class="preguntas">
-                        <label for="pregunta">Pregunta: </label>
-                        <input type="text" class="pregunta">
-                    </div>
-                </div>
-                <div class="contenedor_respuestas">
-                    <div class="respuestas">
-                        <label for="respuesta">Respuesta: </label>
-                        <input type="text" class="respuesta">
-                    </div>
-                </div>
-            </div>
+
         </section>
         <section>
-
             <button id="enviar">Enviar</button>
             <button id="copiar">Copiar</button>
+            <button id="actualizar" onclick="location.reload()">Actualizar</button>
         </section>
         <section class="textarea">
             <textarea name="resultado" id="resultado" rows="4" cols="50" maxlength="100"></textarea>

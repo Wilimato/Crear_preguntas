@@ -1,3 +1,5 @@
+document.addEventListener("DOMContentLoaded", agregarBloque);
+
 const button = document.getElementById('myButton');
 const buttonRespuesta = document.getElementById('Button-respuesta');
 const removeButton = document.getElementById('removeButton');
@@ -6,6 +8,17 @@ const container = document.getElementById('capsula');
 const contenedorPR = document.querySelector('.contenedor_P-R');
 const botonEnviar = document.getElementById('enviar');
 const botonCopiar = document.getElementById('copiar');
+const botones = document.querySelector('.botones');
+
+// un addEventListener con scroll para menu fijo
+window.addEventListener('scroll', function () {
+    if (window.scrollY > 100) {
+        botones.classList.add('active');
+    } else {
+        botones.classList.remove('active');
+    }
+});
+
 
 
 function agregarBloque() {
@@ -19,7 +32,7 @@ function agregarBloque() {
     labelPregunta.setAttribute("for", "pregunta");
     labelPregunta.textContent = "Pregunta: ";
 
-    const inputPregunta = document.createElement("input");
+    const inputPregunta = document.createElement("textarea");
     inputPregunta.setAttribute("type", "text");
     inputPregunta.classList.add("pregunta");
 
@@ -31,9 +44,9 @@ function agregarBloque() {
 
     const labelRespuesta = document.createElement("label");
     labelRespuesta.setAttribute("for", "respuesta");
-    labelRespuesta.textContent = "Respuesta: ";
+    labelRespuesta.textContent = "Respuesta 1: ";
 
-    const inputRespuesta = document.createElement("input");
+    const inputRespuesta = document.createElement("textarea");
     inputRespuesta.setAttribute("type", "text");
     inputRespuesta.classList.add("respuesta");
 
@@ -54,6 +67,30 @@ function removerBloque() {
     }
 }
 
+// function agregarContenedorRespuesta() {
+
+//     let contenedor_respuestas = document.querySelectorAll('.contenedor_respuestas');
+//     const ultimoElemento = contenedor_respuestas[contenedor_respuestas.length - 1];
+
+//     const respuestas = document.createElement("div");
+//     respuestas.classList.add("respuestas");
+
+//     const labelPregunta = document.createElement("label");
+//     labelPregunta.setAttribute("for", "respuesta");
+//     labelPregunta.textContent = "Respuesta: ";
+
+//     const inputPregunta = document.createElement("textarea");
+//     inputPregunta.setAttribute("type", "text");
+//     inputPregunta.classList.add("respuesta");
+
+//     respuestas.appendChild(labelPregunta);
+//     respuestas.appendChild(inputPregunta);
+
+//     ultimoElemento.appendChild(respuestas);
+
+
+// }
+
 function agregarContenedorRespuesta() {
 
     let contenedor_respuestas = document.querySelectorAll('.contenedor_respuestas');
@@ -64,9 +101,9 @@ function agregarContenedorRespuesta() {
 
     const labelPregunta = document.createElement("label");
     labelPregunta.setAttribute("for", "respuesta");
-    labelPregunta.textContent = "Respuesta: ";
+    labelPregunta.textContent = "Respuesta " + (ultimoElemento.children.length) + ": ";
 
-    const inputPregunta = document.createElement("input");
+    const inputPregunta = document.createElement("textarea");
     inputPregunta.setAttribute("type", "text");
     inputPregunta.classList.add("respuesta");
 
@@ -74,9 +111,8 @@ function agregarContenedorRespuesta() {
     respuestas.appendChild(inputPregunta);
 
     ultimoElemento.appendChild(respuestas);
-
-
 }
+
 
 function removerBloqueRespuesta() {
     let contenedor_respuestas = document.querySelectorAll(".contenedor_respuestas");
@@ -94,52 +130,16 @@ function removerBloqueRespuesta() {
 
 }
 
-
-
-// function enviar() {
-//     const fragment = document.createDocumentFragment();
-//     const capsula = document.getElementById('capsula');
-//     const contenedores = capsula.querySelectorAll('.contenedor_P-R');
-
-//     for (let i = 0; i < contenedores.length; i++) {
-//         const pregunta = contenedores[i].querySelector('.pregunta').value;
-//         const respuestas = contenedores[i].querySelectorAll('.respuesta');
-//         const respuestasArray = [];
-
-//         for (let j = 0; j < respuestas.length; j++) {
-//             respuestasArray.push(respuestas[j].value);
-
-
-//         }
-//         let html = `<div class="faq-title">
-//                 <div class="faq-title-text">
-//                     <h2>` + pregunta + `</h2>
-//                     </div>
-//                     <div class="faq-title-arrow"><span class="mbi mbi-chevron-down"></span></div>
-//                 </div>`;
-//         html += `<div class="faq-content">
-//         <ul>`
-//         for (let j = 0; j < respuestas.length; j++) {
-//             html += `<li>` + respuestasArray[j] + `</li>`;
-//         }
-
-//         html += `</ul>
-//         </div>`;
-
-//         console.log(typeof (html))
-
-//         const faqItem = document.querySelector(".faq-item")
-
-//         faqItem.innerHTML = html;
-//     }
-//     let resultadoFinal = document.getElementById("resultados")
-
-//     const textarea = document.getElementById('resultado');
-
-//     textarea.innerHTML = resultadoFinal.outerHTML;
-// }
+let enviado = false;
 
 function enviar() {
+    if (enviado) {
+        // Si ya se envió una vez, elimina todo el contenido de faqContainer
+        const faqContainer = document.querySelector(".faq-container");
+        faqContainer.innerHTML = '';
+        enviado = false;
+    }
+
     const fragment = document.createDocumentFragment();
     const capsula = document.getElementById('capsula');
     const contenedores = capsula.querySelectorAll('.contenedor_P-R');
@@ -155,12 +155,12 @@ function enviar() {
         }
 
         let html = `<div class="faq-title">
-          <div class="faq-title-text">
-            <h2>` + pregunta + `</h2>
-          </div>
-          <div class="faq-title-arrow"><span class="mbi mbi-chevron-down"></span></div>
-        </div>
-        <div class="faq-content">`;
+      <div class="faq-title-text">
+        <h2>` + pregunta + `</h2>
+      </div>
+      <div class="faq-title-arrow"><span class="mbi mbi-chevron-down"></span></div>
+    </div>
+    <div class="faq-content">`;
         for (let j = 0; j < respuestas.length; j++) {
             html += `<p>` + respuestasArray[j] + `</p>`;
         }
@@ -170,25 +170,18 @@ function enviar() {
         faqItem.classList.add("faq-item")
         faqItem.innerHTML = html;
 
-        const faqContainer = document.querySelector(".faq-container");
-        // Agrega el nuevo elemento FAQ a la capsula
-        faqContainer.appendChild(faqItem);
+        fragment.appendChild(faqItem);
     }
+
+    const faqContainer = document.querySelector(".faq-container");
+    faqContainer.appendChild(fragment);
 
     // Actualiza el textarea con el contenido de la capsula
     const resultadoFinal = document.getElementById("resultados");
     const textarea = document.getElementById('resultado');
     textarea.innerHTML = resultadoFinal.outerHTML;
-}
 
-
-//Copiar resultado
-function copy() {
-    document.getElementById("resultado").focus();
-    document.execCommand("selectAll");
-    document.execCommand("copy");
-    mensaje.classList.add("activo");
-    setTimeout(() => mensaje.classList.remove("activo"), 4000);
+    enviado = true;
 }
 
 button.addEventListener('click', agregarBloque);
@@ -201,9 +194,10 @@ botonCopiar.addEventListener('click', copy);
 document.addEventListener("keyup", function (event) {
     if (event.keyCode == 13) {
         enviar();
-    } else if (event.keyCode === 67) {
+    } else if (event.ctrlKey && event.key === 'c') {
         copy();
     }
 });
+
 
 
