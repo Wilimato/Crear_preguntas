@@ -65,7 +65,7 @@ function agregarBloque() {
 
 function removerBloque() {
     const contenedores = container.querySelectorAll(".contenedor_P-R");
-    if (contenedores.length > 0) {
+    if (contenedores.length > 1) {
         const ultimoContenedor = contenedores[contenedores.length - 1];
         container.removeChild(ultimoContenedor);
     }
@@ -210,6 +210,12 @@ document.addEventListener("keyup", function (event) {
         enviar();
     } else if (event.ctrlKey && event.key === 'c') {
         copy();
+    }
+});
+
+document.addEventListener('keydown', function (event) {
+    if (event.ctrlKey && event.key === 'x') {
+        location.reload();
     }
 });
 
