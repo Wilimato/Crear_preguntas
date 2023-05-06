@@ -9,13 +9,17 @@ const contenedorPR = document.querySelector('.contenedor_P-R');
 const botonEnviar = document.getElementById('enviar');
 const botonCopiar = document.getElementById('copiar');
 const botones = document.querySelector('.botones');
+const scroll = document.querySelector('.my-link');
 
 // un addEventListener con scroll para menu fijo
 window.addEventListener('scroll', function () {
-    if (window.scrollY > 100) {
+    if (window.scrollY > 90) {
         botones.classList.add('active');
+        scroll.classList.add('activeScroll');
+
     } else {
         botones.classList.remove('active');
+        scroll.classList.remove('activeScroll');
     }
 });
 
@@ -68,16 +72,14 @@ function removerBloque() {
 }
 
 // function agregarContenedorRespuesta() {
-
-//     let contenedor_respuestas = document.querySelectorAll('.contenedor_respuestas');
-//     const ultimoElemento = contenedor_respuestas[contenedor_respuestas.length - 1];
-
 //     const respuestas = document.createElement("div");
 //     respuestas.classList.add("respuestas");
 
+//     const answerCount = document.querySelectorAll('.respuesta').length + 1;
+
 //     const labelPregunta = document.createElement("label");
 //     labelPregunta.setAttribute("for", "respuesta");
-//     labelPregunta.textContent = "Respuesta " + (ultimoElemento.children.length) + ": ";
+//     labelPregunta.textContent = "Respuesta " + answerCount + ": ";
 
 //     const inputPregunta = document.createElement("textarea");
 //     inputPregunta.setAttribute("type", "text");
@@ -86,18 +88,21 @@ function removerBloque() {
 //     respuestas.appendChild(labelPregunta);
 //     respuestas.appendChild(inputPregunta);
 
-//     ultimoElemento.appendChild(respuestas);
+//     const container = document.querySelector('.contenedor_respuestas');
+//     container.appendChild(respuestas);
 // }
 
 function agregarContenedorRespuesta() {
+
+    let contenedor_respuestas = document.querySelectorAll('.contenedor_respuestas');
+    const ultimoElemento = contenedor_respuestas[contenedor_respuestas.length - 1];
+
     const respuestas = document.createElement("div");
     respuestas.classList.add("respuestas");
 
-    const answerCount = document.querySelectorAll('.respuesta').length + 1;
-
     const labelPregunta = document.createElement("label");
     labelPregunta.setAttribute("for", "respuesta");
-    labelPregunta.textContent = "Respuesta " + answerCount + ": ";
+    labelPregunta.textContent = "Respuesta " + (ultimoElemento.querySelectorAll('.respuestas').length + 2) + ": ";
 
     const inputPregunta = document.createElement("textarea");
     inputPregunta.setAttribute("type", "text");
@@ -106,8 +111,9 @@ function agregarContenedorRespuesta() {
     respuestas.appendChild(labelPregunta);
     respuestas.appendChild(inputPregunta);
 
-    const container = document.querySelector('.contenedor_respuestas');
-    container.appendChild(respuestas);
+    ultimoElemento.appendChild(respuestas);
+
+
 }
 
 
@@ -181,10 +187,15 @@ function enviar() {
     enviado = true;
 }
 
+let mensaje = document.getElementById("offMensaje");
+
 function copy() {
     const textarea = document.getElementById('resultado');
     textarea.select();
     document.execCommand('copy');
+    mensaje.classList.add("activarMensaje");
+    setTimeout(() => mensaje.classList.remove("activarMensaje"), 4000);
+
 }
 
 button.addEventListener('click', agregarBloque);
@@ -201,6 +212,5 @@ document.addEventListener("keyup", function (event) {
         copy();
     }
 });
-
 
 

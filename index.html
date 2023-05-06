@@ -9,29 +9,34 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ysabeau:wght@1;100;500;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="stylesheet" href="style.css">
     <title>Crear Preguntas Regulares</title>
 </head>
 
 <body>
-    <main class="contenedor-principal">
+    <main id="my-section" class="contenedor-principal">
         <header class="header">
             <h1>Crear Preguntas Regulares</h1>
             <div class="botones">
-                <div class="botones-preguntas">
-                    <h2>Preguntas</h2>
-                    <div class="btn-pre">
-                        <button id="myButton">+</button>
-                        <button id="removeButton">-</button>
+                <div class="botones-2">
+                    <div class="botones-preguntas">
+                        <h2>Preguntas</h2>
+                        <div class="btn-pre">
+                            <button id="myButton">+</button>
+                            <button id="removeButton">-</button>
+                        </div>
+                    </div>
+                    <div class="botones-respuestas">
+                        <h2>Respuestas</h2>
+                        <div class="btn-res">
+                            <button id="Button-respuesta">+</button>
+                            <button id="ButtonRemoverRespuesta">-</button>
+                        </div>
                     </div>
                 </div>
-                <div class="botones-respuestas">
-                    <h2>Respuestas</h2>
-                    <div class="btn-res">
-                        <button id="Button-respuesta">+</button>
-                        <button id="ButtonRemoverRespuesta">-</button>
-                    </div>
-                </div>
+                <span class="mensaje" id="offMensaje">Copiado Correctamente</span>
             </div>
         </header>
         <section class="capsula" id="capsula">
@@ -45,6 +50,10 @@
         <section class="textarea">
             <textarea name="resultado" id="resultado" rows="4" cols="50" maxlength="100"></textarea>
         </section>
+
+        <a href="#my-section" id="my-link" class="my-link"><span class="material-symbols-outlined">
+                arrow_upward
+            </span></a>
 
     </main>
 
