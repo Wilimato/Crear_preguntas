@@ -141,7 +141,7 @@ header h1 {
 .contenedor_preguntas .pregunta,
 .contenedor_respuestas .respuesta {
     width: 900px;
-    height: 100px;
+    height: 80px;
     border-radius: 5px;
     border: none;
     margin: 5px;
