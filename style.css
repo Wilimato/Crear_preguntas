@@ -187,17 +187,20 @@ header h1 {
 }
 
 
-.mensaje {
+.mensaje,
+.resultadoVacio,
+.enviadoCorrectamente,
+.campoVacio {
     display: none;
     color: black;
     opacity: 0;
     font-size: 20px;
     font-weight: 900;
     transition: all 1s ease;
-    margin: 5px;
+    margin-bottom: 10px;
 }
 
-.mensaje.activarMensaje {
+.activarMensaje {
     display: block;
     animation: latidos 1s infinite;
 }

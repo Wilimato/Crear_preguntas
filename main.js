@@ -135,66 +135,169 @@ function removerBloqueRespuesta() {
 
 let enviado = false;
 
+// function enviar() {
+//     if (enviado) {
+//         // Si ya se envió una vez, elimina todo el contenido de faqContainer
+//         const faqContainer = document.querySelector(".faq-container");
+//         faqContainer.innerHTML = '';
+//         enviado = false;
+//     }
+
+//     const fragment = document.createDocumentFragment();
+//     const capsula = document.getElementById('capsula');
+//     const contenedores = capsula.querySelectorAll('.contenedor_P-R');
+
+//     // Crea un nuevo elemento FAQ para cada pregunta y sus respuestas
+//     for (let i = 0; i < contenedores.length; i++) {
+//         const pregunta = contenedores[i].querySelector('.pregunta').value;
+//         const respuestas = contenedores[i].querySelectorAll('.respuesta');
+//         const respuestasArray = [];
+
+//         for (let j = 0; j < respuestas.length; j++) {
+//             respuestasArray.push(respuestas[j].value);
+//         }
+
+//         let html = `<div class="faq-title">
+//       <div class="faq-title-text">
+//         <h2>` + pregunta + `</h2>
+//       </div>
+//       <div class="faq-title-arrow"><span class="mbi mbi-chevron-down"></span></div>
+//     </div>
+//     <div class="faq-content">`;
+//         for (let j = 0; j < respuestas.length; j++) {
+//             html += `<p>` + respuestasArray[j] + `</p>`;
+//         }
+//         html += `</div>`;
+
+
+//         const faqItem = document.createElement("div");
+//         faqItem.classList.add("faq-item")
+//         faqItem.innerHTML = html;
+
+//         fragment.appendChild(faqItem);
+//     }
+
+//     // Agrega el fragmento al contenedor
+//     const faqContainer = document.querySelector(".faq-container");
+//     faqContainer.appendChild(fragment);
+
+//     // Actualiza el textarea con el contenido de la capsula
+//     const resultadoFinal = document.getElementById("resultados");
+//     const textarea = document.getElementById('resultado');
+//     textarea.innerHTML = resultadoFinal.outerHTML;
+
+//     enviado = true;
+
+
+//     if (enviado) {
+//         let enviadoCorrectamente = document.getElementById("enviado");
+//         enviadoCorrectamente.classList.add("activarMensaje");
+//         setTimeout(() => enviadoCorrectamente.classList.remove("activarMensaje"), 4000);
+//     }
+// }
+
 function enviar() {
+    const contenedores = document.querySelectorAll(".contenedor_P-R");
+
+    // Verifica si hay algún campo vacío
+    for (let i = 0; i < contenedores.length; i++) {
+        const pregunta = contenedores[i].querySelector(".pregunta").value.trim();
+        const respuestas = contenedores[i].querySelectorAll(".respuesta");
+        let respuestasArray = [];
+
+        for (let j = 0; j < respuestas.length; j++) {
+            respuestasArray.push(respuestas[j].value.trim());
+        }
+
+        if (pregunta === "" || respuestasArray.some(r => r === "")) {
+            // Muestra un mensaje de error si hay campos vacíos
+            let campoVacio = document.getElementById("campoVacio");
+            campoVacio.classList.add("activarMensaje");
+            setTimeout(
+                () => campoVacio.classList.remove("activarMensaje"),
+                4000
+            );
+            return;
+        }
+    }
+
+    // Si no hay campos vacíos, continúa con el proceso de envío
     if (enviado) {
         // Si ya se envió una vez, elimina todo el contenido de faqContainer
         const faqContainer = document.querySelector(".faq-container");
-        faqContainer.innerHTML = '';
+        faqContainer.innerHTML = "";
         enviado = false;
     }
 
     const fragment = document.createDocumentFragment();
-    const capsula = document.getElementById('capsula');
-    const contenedores = capsula.querySelectorAll('.contenedor_P-R');
+    const capsula = document.getElementById("capsula");
 
     // Crea un nuevo elemento FAQ para cada pregunta y sus respuestas
     for (let i = 0; i < contenedores.length; i++) {
-        const pregunta = contenedores[i].querySelector('.pregunta').value;
-        const respuestas = contenedores[i].querySelectorAll('.respuesta');
-        const respuestasArray = [];
+        const pregunta = contenedores[i].querySelector(".pregunta").value.trim();
+        const respuestas = contenedores[i].querySelectorAll(".respuesta");
+        let respuestasArray = [];
 
         for (let j = 0; j < respuestas.length; j++) {
-            respuestasArray.push(respuestas[j].value);
+            respuestasArray.push(respuestas[j].value.trim());
         }
 
         let html = `<div class="faq-title">
-      <div class="faq-title-text">
-        <h2>` + pregunta + `</h2>
+        <div class="faq-title-text">
+          <h2>` + pregunta + `</h2>
+        </div>
+        <div class="faq-title-arrow"><span class="mbi mbi-chevron-down"></span></div>
       </div>
-      <div class="faq-title-arrow"><span class="mbi mbi-chevron-down"></span></div>
-    </div>
-    <div class="faq-content">`;
+      <div class="faq-content">`;
         for (let j = 0; j < respuestas.length; j++) {
             html += `<p>` + respuestasArray[j] + `</p>`;
         }
         html += `</div>`;
 
         const faqItem = document.createElement("div");
-        faqItem.classList.add("faq-item")
+        faqItem.classList.add("faq-item");
         faqItem.innerHTML = html;
 
         fragment.appendChild(faqItem);
     }
 
+    // Agrega el fragmento al contenedor
     const faqContainer = document.querySelector(".faq-container");
     faqContainer.appendChild(fragment);
 
     // Actualiza el textarea con el contenido de la capsula
     const resultadoFinal = document.getElementById("resultados");
-    const textarea = document.getElementById('resultado');
+    const textarea = document.getElementById("resultado");
     textarea.innerHTML = resultadoFinal.outerHTML;
 
     enviado = true;
+
+    if (enviado) {
+        let enviadoCorrectamente = document.getElementById("enviado");
+        enviadoCorrectamente.classList.add("activarMensaje");
+        setTimeout(
+            () => enviadoCorrectamente.classList.remove("activarMensaje"),
+            4000
+        );
+    }
 }
 
 let mensaje = document.getElementById("offMensaje");
+let resultadoVacio = document.getElementById("vacio");
 
 function copy() {
     const textarea = document.getElementById('resultado');
     textarea.select();
     document.execCommand('copy');
-    mensaje.classList.add("activarMensaje");
-    setTimeout(() => mensaje.classList.remove("activarMensaje"), 4000);
+    if (!textarea.value) {
+        // La variable está vacía
+        resultadoVacio.classList.add("activarMensaje");
+        setTimeout(() => resultadoVacio.classList.remove("activarMensaje"), 4000);
+    } else {
+        mensaje.classList.add("activarMensaje");
+        setTimeout(() => mensaje.classList.remove("activarMensaje"), 4000);
+    }
+
 
 }
 
