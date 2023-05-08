@@ -23,9 +23,10 @@ window.addEventListener('scroll', function () {
     }
 });
 
-
-
 function agregarBloque() {
+
+    const contenedorPR = document.querySelectorAll('.contenedor_P-R').length + 1;
+
     const nuevoContenedor = document.createElement("div");
     nuevoContenedor.classList.add("contenedor_P-R");
 
@@ -34,7 +35,7 @@ function agregarBloque() {
 
     const labelPregunta = document.createElement("label");
     labelPregunta.setAttribute("for", "pregunta");
-    labelPregunta.textContent = "Pregunta: ";
+    labelPregunta.textContent = "Pregunta " + contenedorPR + ": ";
 
     const inputPregunta = document.createElement("textarea");
     inputPregunta.setAttribute("type", "text");
@@ -43,8 +44,13 @@ function agregarBloque() {
     contenedorRespuesta.appendChild(labelPregunta);
     contenedorRespuesta.appendChild(inputPregunta);
 
+
     const contenedorPreguntas = document.createElement("div");
     contenedorPreguntas.classList.add("contenedor_respuestas");
+    contenedorPreguntas.id = "contenedor_respuestas";
+
+    const respuestas = document.createElement("div");
+    respuestas.classList.add("respuestas");
 
     const labelRespuesta = document.createElement("label");
     labelRespuesta.setAttribute("for", "respuesta");
@@ -54,8 +60,10 @@ function agregarBloque() {
     inputRespuesta.setAttribute("type", "text");
     inputRespuesta.classList.add("respuesta");
 
-    contenedorPreguntas.appendChild(labelRespuesta);
-    contenedorPreguntas.appendChild(inputRespuesta);
+    respuestas.appendChild(labelRespuesta);
+    respuestas.appendChild(inputRespuesta);
+
+    contenedorPreguntas.appendChild(respuestas);
 
     nuevoContenedor.appendChild(contenedorRespuesta);
     nuevoContenedor.appendChild(contenedorPreguntas);
@@ -102,7 +110,7 @@ function agregarContenedorRespuesta() {
 
     const labelPregunta = document.createElement("label");
     labelPregunta.setAttribute("for", "respuesta");
-    labelPregunta.textContent = "Respuesta " + (ultimoElemento.querySelectorAll('.respuestas').length + 2) + ": ";
+    labelPregunta.textContent = "Respuesta " + (ultimoElemento.querySelectorAll('.respuestas').length + 1) + ": ";
 
     const inputPregunta = document.createElement("textarea");
     inputPregunta.setAttribute("type", "text");
@@ -321,5 +329,9 @@ document.addEventListener('keydown', function (event) {
         location.reload();
     }
 });
+
+
+
+
 
 
