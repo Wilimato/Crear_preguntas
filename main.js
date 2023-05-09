@@ -324,11 +324,11 @@ document.addEventListener("keyup", function (event) {
     }
 });
 
-document.addEventListener('keydown', function (event) {
+/*document.addEventListener('keydown', function (event) {
     if (event.ctrlKey && event.key === 'x') {
         location.reload();
     }
-});
+});*/
 
 
 
