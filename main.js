@@ -316,16 +316,15 @@ removerRespuesta.addEventListener('click', removerBloqueRespuesta);
 botonEnviar.addEventListener('click', enviar);
 botonCopiar.addEventListener('click', copy);
 
-document.addEventListener("keyup", function (event) {
-    /*if (event.keyCode == 13) {
+/*document.addEventListener("keyup", function (event) {
+    if (event.keyCode == 13) {
         enviar();
-    } else */
+    } else
     if (event.ctrlKey && event.key === 'c') {
         copy();
     }
 });
-
-/*document.addEventListener('keydown', function (event) {
+document.addEventListener('keydown', function (event) {
     if (event.ctrlKey && event.key === 'x') {
         location.reload();
     }
