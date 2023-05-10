@@ -317,9 +317,10 @@ botonEnviar.addEventListener('click', enviar);
 botonCopiar.addEventListener('click', copy);
 
 document.addEventListener("keyup", function (event) {
-    if (event.keyCode == 13) {
+    /*if (event.keyCode == 13) {
         enviar();
-    } else if (event.ctrlKey && event.key === 'c') {
+    } else */
+    if (event.ctrlKey && event.key === 'c') {
         copy();
     }
 });
