@@ -233,8 +233,10 @@ function enviar() {
     // Si no hay campos vacíos, continúa con el proceso de envío
     if (enviado) {
         // Si ya se envió una vez, elimina todo el contenido de faqContainer
+        const resultados2 = document.getElementById("resultados2");
         const faqContainer = document.querySelector(".faq-container");
         faqContainer.innerHTML = "";
+        resultados2.innerHTML = "";
         enviado = false;
     }
 
