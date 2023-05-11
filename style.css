@@ -169,7 +169,8 @@ header h1 {
 
 #copiar,
 #enviar,
-#actualizar {
+#actualizar,
+#copiarTexto {
     margin: 10px;
     border-radius: 10px;
     color: black;
@@ -182,10 +183,11 @@ header h1 {
 
 #copiar:hover,
 #enviar:hover,
-#actualizar:hover {
+#actualizar:hover,
+#copiarTexto:hover {
     cursor: pointer;
     filter: drop-shadow(0 0 2px black) drop-shadow(0 0 2px black) drop-shadow(0 0 2px black);
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
 
@@ -283,5 +285,9 @@ html {
 }
 
 .capsula .contenedor_P-R.drag {
+    opacity: 0;
+}
+
+#resultados2 {
     opacity: 0;
 }

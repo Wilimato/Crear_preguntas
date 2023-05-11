@@ -8,6 +8,7 @@ const container = document.getElementById('capsula');
 const contenedorPR = document.querySelector('.contenedor_P-R');
 const botonEnviar = document.getElementById('enviar');
 const botonCopiar = document.getElementById('copiar');
+const botonCopiarTexto = document.getElementById('copiarTexto');
 const botones = document.querySelector('.botones');
 const scroll = document.querySelector('.my-link');
 
@@ -238,7 +239,7 @@ function enviar() {
     }
 
     const fragment = document.createDocumentFragment();
-    const capsula = document.getElementById("capsula");
+    const fragment2 = document.createDocumentFragment();
 
     // Crea un nuevo elemento FAQ para cada pregunta y sus respuestas
     for (let i = 0; i < contenedores.length; i++) {
@@ -249,7 +250,7 @@ function enviar() {
         for (let j = 0; j < respuestas.length; j++) {
             respuestasArray.push(respuestas[j].value.trim());
         }
-
+        let = html2 = `<h2>` + pregunta + `</h2>`;
         let html = `<div class="faq-title">
         <div class="faq-title-text">
           <h2>` + pregunta + `</h2>
@@ -259,14 +260,27 @@ function enviar() {
       <div class="faq-content">`;
         for (let j = 0; j < respuestas.length; j++) {
             html += `<p>` + respuestasArray[j] + `</p>`;
+            html2 += `<p>` + respuestasArray[j] + `</p>`;
         }
         html += `</div>`;
 
         const faqItem = document.createElement("div");
         faqItem.classList.add("faq-item");
         faqItem.innerHTML = html;
-
         fragment.appendChild(faqItem);
+
+
+        const textoContenedor = document.createElement("div");
+        textoContenedor.classList.add("textoContenedor");
+        textoContenedor.innerHTML = html2;
+
+        fragment2.appendChild(textoContenedor);
+        const resultados2 = document.getElementById("resultados2");
+        resultados2.appendChild(fragment2);
+
+
+
+
     }
 
     // Agrega el fragmento al contenedor
@@ -276,7 +290,10 @@ function enviar() {
     // Actualiza el textarea con el contenido de la capsula
     const resultadoFinal = document.getElementById("resultados");
     const textarea = document.getElementById("resultado");
+
     textarea.innerHTML = resultadoFinal.outerHTML;
+
+
 
     enviado = true;
 
@@ -289,6 +306,10 @@ function enviar() {
         );
     }
 }
+
+
+
+
 
 let mensaje = document.getElementById("offMensaje");
 let resultadoVacio = document.getElementById("vacio");
@@ -309,12 +330,34 @@ function copy() {
 
 }
 
+function copyTexto() {
+    const miDiv = document.getElementById('resultados2');
+    const contenido = miDiv.innerText;
+    const seleccion = window.getSelection();
+    const rango = document.createRange();
+    rango.selectNodeContents(miDiv);
+    seleccion.removeAllRanges();
+    seleccion.addRange(rango);
+    document.execCommand('copy');
+    seleccion.removeAllRanges();
+
+    if (!contenido) {
+        // La variable está vacía
+        resultadoVacio.classList.add("activarMensaje");
+        setTimeout(() => resultadoVacio.classList.remove("activarMensaje"), 4000);
+    } else {
+        mensaje.classList.add("activarMensaje");
+        setTimeout(() => mensaje.classList.remove("activarMensaje"), 4000);
+    }
+}
+
 button.addEventListener('click', agregarBloque);
 removeButton.addEventListener('click', removerBloque);
 buttonRespuesta.addEventListener('click', agregarContenedorRespuesta);
 removerRespuesta.addEventListener('click', removerBloqueRespuesta);
 botonEnviar.addEventListener('click', enviar);
 botonCopiar.addEventListener('click', copy);
+botonCopiarTexto.addEventListener('click', copyTexto);
 
 /*document.addEventListener("keyup", function (event) {
     if (event.keyCode == 13) {
