@@ -138,29 +138,30 @@
                 });
             });
         </script>
-        <script src="main.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
-        <script>
-            const lista = document.getElementById("capsula");
+    </section>
+    <script src="main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+    <script>
+        const lista = document.getElementById("capsula");
 
-            let sortableInstance = new Sortable(lista, {
-                animation: 150,
-                chosenClass: 'seleccionado',
-                dragClass: 'drag'
-            });
-            const activarDrag = document.querySelector(".activar-drag");
-            activarDrag.addEventListener("click", () => {
-                const estado = sortableInstance.option('disabled');
-                sortableInstance.option('disabled', !estado);
+        let sortableInstance = new Sortable(lista, {
+            animation: 150,
+            chosenClass: 'seleccionado',
+            dragClass: 'drag'
+        });
+        const activarDrag = document.querySelector(".activar-drag");
+        activarDrag.addEventListener("click", () => {
+            const estado = sortableInstance.option('disabled');
+            sortableInstance.option('disabled', !estado);
 
-                if (estado) {
-                    activarDrag.textContent = "Bloquear";
-                } else {
-                    activarDrag.textContent = "Desbloquear";
-                }
-            });
-            sortableInstance.option('disabled', true);
-        </script>
+            if (estado) {
+                activarDrag.textContent = "Bloquear";
+            } else {
+                activarDrag.textContent = "Desbloquear";
+            }
+        });
+        sortableInstance.option('disabled', true);
+    </script>
 </body>
 
 </html>
