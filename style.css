@@ -30,7 +30,7 @@ header h1 {
 }
 
 .active {
-    margin-top: 50px;
+    margin-top: 90px;
     position: fixed;
 }
 
@@ -87,7 +87,7 @@ header h1 {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 10px;
+    margin: 10px 10px 0 10px;
     padding: 10px;
     border-radius: 10px;
     color: black;
@@ -179,12 +179,26 @@ header h1 {
     padding: 10px;
     border: none;
     background: #fcb800;
+    border: solid 1px black;
+}
+
+.activar-drag {
+    margin: 0 10px 10px 10px;
+    border-radius: 10px;
+    color: black;
+    font-weight: 800;
+    font-size: 16px;
+    padding: 10px;
+    border: none;
+    background: #fcb800;
+    border: solid 1px black;
 }
 
 #copiar:hover,
 #enviar:hover,
 #actualizar:hover,
-#copiarTexto:hover {
+#copiarTexto:hover,
+.activar-drag:hover {
     cursor: pointer;
     filter: drop-shadow(0 0 2px black) drop-shadow(0 0 2px black) drop-shadow(0 0 2px black);
     transform: scale(1.05);
@@ -290,4 +304,8 @@ html {
 
 #resultados2 {
     opacity: 0;
+}
+
+.posscroll {
+    margin-top: 200px;
 }

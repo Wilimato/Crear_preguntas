@@ -36,6 +36,7 @@
                         </div>
                     </div>
                 </div>
+                <button class="activar-drag">Desbloquear</button>
                 <span class="mensaje" id="offMensaje">Copiado Correctamente</span>
                 <span class="resultadoVacio" id="vacio">Resultado Vacío</span>
                 <span class="enviadoCorrectamente" id="enviado">Enviado Correctamente</span>
@@ -142,11 +143,23 @@
         <script>
             const lista = document.getElementById("capsula");
 
-            Sortable.create(lista, {
+            let sortableInstance = new Sortable(lista, {
                 animation: 150,
                 chosenClass: 'seleccionado',
-                dragClass: 'drag',
+                dragClass: 'drag'
             });
+            const activarDrag = document.querySelector(".activar-drag");
+            activarDrag.addEventListener("click", () => {
+                const estado = sortableInstance.option('disabled');
+                sortableInstance.option('disabled', !estado);
+
+                if (estado) {
+                    activarDrag.textContent = "Bloquear";
+                } else {
+                    activarDrag.textContent = "Desbloquear";
+                }
+            });
+            sortableInstance.option('disabled', true);
         </script>
 </body>
 

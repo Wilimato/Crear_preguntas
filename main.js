@@ -17,10 +17,13 @@ window.addEventListener('scroll', function () {
     if (window.scrollY > 90) {
         botones.classList.add('active');
         scroll.classList.add('activeScroll');
+        container.classList.add('posscroll');
+
 
     } else {
         botones.classList.remove('active');
         scroll.classList.remove('activeScroll');
+        container.classList.remove('posscroll');
     }
 });
 
@@ -80,27 +83,6 @@ function removerBloque() {
     }
 }
 
-// function agregarContenedorRespuesta() {
-//     const respuestas = document.createElement("div");
-//     respuestas.classList.add("respuestas");
-
-//     const answerCount = document.querySelectorAll('.respuesta').length + 1;
-
-//     const labelPregunta = document.createElement("label");
-//     labelPregunta.setAttribute("for", "respuesta");
-//     labelPregunta.textContent = "Respuesta " + answerCount + ": ";
-
-//     const inputPregunta = document.createElement("textarea");
-//     inputPregunta.setAttribute("type", "text");
-//     inputPregunta.classList.add("respuesta");
-
-//     respuestas.appendChild(labelPregunta);
-//     respuestas.appendChild(inputPregunta);
-
-//     const container = document.querySelector('.contenedor_respuestas');
-//     container.appendChild(respuestas);
-// }
-
 function agregarContenedorRespuesta() {
 
     let contenedor_respuestas = document.querySelectorAll('.contenedor_respuestas');
@@ -143,67 +125,6 @@ function removerBloqueRespuesta() {
 }
 
 let enviado = false;
-
-// function enviar() {
-//     if (enviado) {
-//         // Si ya se envió una vez, elimina todo el contenido de faqContainer
-//         const faqContainer = document.querySelector(".faq-container");
-//         faqContainer.innerHTML = '';
-//         enviado = false;
-//     }
-
-//     const fragment = document.createDocumentFragment();
-//     const capsula = document.getElementById('capsula');
-//     const contenedores = capsula.querySelectorAll('.contenedor_P-R');
-
-//     // Crea un nuevo elemento FAQ para cada pregunta y sus respuestas
-//     for (let i = 0; i < contenedores.length; i++) {
-//         const pregunta = contenedores[i].querySelector('.pregunta').value;
-//         const respuestas = contenedores[i].querySelectorAll('.respuesta');
-//         const respuestasArray = [];
-
-//         for (let j = 0; j < respuestas.length; j++) {
-//             respuestasArray.push(respuestas[j].value);
-//         }
-
-//         let html = `<div class="faq-title">
-//       <div class="faq-title-text">
-//         <h2>` + pregunta + `</h2>
-//       </div>
-//       <div class="faq-title-arrow"><span class="mbi mbi-chevron-down"></span></div>
-//     </div>
-//     <div class="faq-content">`;
-//         for (let j = 0; j < respuestas.length; j++) {
-//             html += `<p>` + respuestasArray[j] + `</p>`;
-//         }
-//         html += `</div>`;
-
-
-//         const faqItem = document.createElement("div");
-//         faqItem.classList.add("faq-item")
-//         faqItem.innerHTML = html;
-
-//         fragment.appendChild(faqItem);
-//     }
-
-//     // Agrega el fragmento al contenedor
-//     const faqContainer = document.querySelector(".faq-container");
-//     faqContainer.appendChild(fragment);
-
-//     // Actualiza el textarea con el contenido de la capsula
-//     const resultadoFinal = document.getElementById("resultados");
-//     const textarea = document.getElementById('resultado');
-//     textarea.innerHTML = resultadoFinal.outerHTML;
-
-//     enviado = true;
-
-
-//     if (enviado) {
-//         let enviadoCorrectamente = document.getElementById("enviado");
-//         enviadoCorrectamente.classList.add("activarMensaje");
-//         setTimeout(() => enviadoCorrectamente.classList.remove("activarMensaje"), 4000);
-//     }
-// }
 
 function enviar() {
     const contenedores = document.querySelectorAll(".contenedor_P-R");
@@ -353,6 +274,8 @@ function copyTexto() {
     }
 }
 
+
+// Listener 
 button.addEventListener('click', agregarBloque);
 removeButton.addEventListener('click', removerBloque);
 buttonRespuesta.addEventListener('click', agregarContenedorRespuesta);
