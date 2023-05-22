@@ -36,7 +36,7 @@
                         </div>
                     </div>
                 </div>
-                <button class="activar-drag">Desbloquear</button>
+                <button class="activar-drag" id="activar-drag">Desbloquear</button>
                 <span class="mensaje" id="offMensaje">Copiado Correctamente</span>
                 <span class="resultadoVacio" id="vacio">Resultado Vacío</span>
                 <span class="enviadoCorrectamente" id="enviado">Enviado Correctamente</span>
@@ -49,7 +49,7 @@
         <section>
             <button id="enviar">Enviar</button>
             <button id="copiar">Copiar Código</button>
-            <button id="copiarTexto">Copia Texto</button>
+            <button id="copiarTexto">Copiar Texto</button>
             <button id="actualizar" onclick="location.reload()">Limpiar</button>
         </section>
         <section class="textarea">
@@ -61,8 +61,8 @@
                 arrow_upward
             </span></a>
 
+        <div id="resultados2"></div>
     </main>
-    <div id="resultados2"></div>
 
     <section id="resultados">
         <style>
@@ -143,25 +143,32 @@
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
     <script>
         const lista = document.getElementById("capsula");
-
         let sortableInstance = new Sortable(lista, {
             animation: 150,
             chosenClass: 'seleccionado',
             dragClass: 'drag'
         });
         const activarDrag = document.querySelector(".activar-drag");
+        sortableInstance.option('disabled', true);
         activarDrag.addEventListener("click", () => {
             const estado = sortableInstance.option('disabled');
             sortableInstance.option('disabled', !estado);
+            const contenedoPR = document.querySelectorAll(".contenedor_P-R");
 
             if (estado) {
                 activarDrag.textContent = "Bloquear";
+                contenedoPR.forEach((elemento) => {
+                    elemento.classList.add("cursor");
+                });
             } else {
                 activarDrag.textContent = "Desbloquear";
+                contenedoPR.forEach((elemento) => {
+                    elemento.classList.remove("cursor");
+                });
             }
         });
-        sortableInstance.option('disabled', true);
     </script>
+
 </body>
 
 </html>

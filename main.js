@@ -29,10 +29,17 @@ window.addEventListener('scroll', function () {
 
 function agregarBloque() {
 
+    const botonBloquear = document.getElementById('activar-drag').textContent;
+
     const contenedorPR = document.querySelectorAll('.contenedor_P-R').length + 1;
 
     const nuevoContenedor = document.createElement("div");
     nuevoContenedor.classList.add("contenedor_P-R");
+
+    //cursor mover
+    if (botonBloquear == "Bloquear") {
+        nuevoContenedor.classList.add("cursor");
+    }
 
     const contenedorRespuesta = document.createElement("div");
     contenedorRespuesta.classList.add("contenedor_preguntas");
