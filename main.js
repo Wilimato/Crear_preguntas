@@ -11,6 +11,18 @@ const botonCopiar = document.getElementById('copiar');
 const botonCopiarTexto = document.getElementById('copiarTexto');
 const botones = document.querySelector('.botones');
 const scroll = document.querySelector('.my-link');
+//obtener generador Masivo
+
+const inputGeneradorMasivo = document.querySelector('.inputGeneradorMasivo');
+const botonGenerador = document.getElementById('Button-generar');
+
+//Funcion de generadorMasivo
+
+function GeneradorMasivo(funcion, veces) {
+    for (let i = 0; i < veces; i++) {
+        funcion();
+    }
+}
 
 // un addEventListener con scroll para menu fijo
 window.addEventListener('scroll', function () {
@@ -290,6 +302,9 @@ removerRespuesta.addEventListener('click', removerBloqueRespuesta);
 botonEnviar.addEventListener('click', enviar);
 botonCopiar.addEventListener('click', copy);
 botonCopiarTexto.addEventListener('click', copyTexto);
+botonGenerador.addEventListener('click', function () {
+    GeneradorMasivo(agregarBloque, inputGeneradorMasivo.value);
+});
 
 /*document.addEventListener("keyup", function (event) {
     if (event.keyCode == 13) {

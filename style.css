@@ -170,6 +170,35 @@ header h1 {
     margin-bottom: 50px;
 }
 
+.generador {
+    display: flex;
+}
+
+.inputGeneradorMasivo {
+    border-radius: 10px;
+    text-align: center;
+    margin: 5px;
+}
+
+#Button-generar {
+    margin: 5px;
+    border-radius: 10px;
+    color: white;
+    font-weight: 800;
+    font-size: 16px;
+    padding: 5px;
+    border: none;
+    background-color: green;
+    border: solid 1px black;
+}
+
+#Button-generar:hover {
+    background: red;
+    border: solid 1px black;
+    cursor: pointer;
+    filter: drop-shadow(0 0 2px black) drop-shadow(0 0 2px black) drop-shadow(0 0 2px black);
+}
+
 #copiar,
 #enviar,
 #actualizar,
